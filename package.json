@@ -1,0 +1,19 @@
+{
+  "name": "pokemon_data_pipeline",
+  "version": "1.0.0",
+  "description": "A data pipeline project to fetch, process, and analyze Pokémon data from the PokéAPI using JavaScript and SQLite.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spreadnroll/pokemon-data-pipeline.git"
+  },
+  "author": "spreadnroll",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/spreadnroll/pokemon-data-pipeline/issues"
+  },
+  "homepage": "https://github.com/spreadnroll/pokemon-data-pipeline#readme"
+}
