@@ -20,7 +20,7 @@ export async function fetchPokemonData(idPoke) {
       const abilityData = abilityReponse.data;
 
       const abilityName = abilityData.name;
-      const abilityDescription = abilityData.effect_entries.find(element => element.language.name === "en").effect;
+      const abilityDescription = abilityData.effect_entries.find(element => element.language.name === "en")?.effect || "No description available";
 
       return {abilityName, abilityDescription}
       
