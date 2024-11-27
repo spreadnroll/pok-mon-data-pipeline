@@ -10,5 +10,3 @@ async function fetchAllPokemons() {
 }
 
 fetchAllPokemons();
-
-//have to fix pokemons abilities

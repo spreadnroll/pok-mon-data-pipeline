@@ -32,7 +32,7 @@ export async function fetchPokemonData(idPoke) {
       height,
       baseExperience,
       type,
-      abilitiesAndDescription,
+      abilitiesAndDescription: JSON.stringify(abilitiesAndDescription),
     };
   } catch (error) {
     throw new Error(
