@@ -17,9 +17,8 @@ export async function fetchPokemonData(idPoke) {
 
     return {name, weight, height, baseExperience, type};
   } catch (error) {
-    console.error(
+    throw new Error(
       `Error during loading Pokémon with ID ${idPoke}: ${error.message}`
     );
-    return null;
   }
 }
