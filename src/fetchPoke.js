@@ -12,10 +12,11 @@ export async function fetchPokemonData(idPoke) {
     const height = pokemon.height;
     const baseExperience = pokemon.base_experience;
     const type = pokemon.types[0].type.name;
+    const abilities = pokemon.abilities.map((ability) => ability.ability.name);
 
 
 
-    return {name, weight, height, baseExperience, type};
+    return {name, weight, height, baseExperience, type, abilities};
   } catch (error) {
     throw new Error(
       `Error during loading Pokémon with ID ${idPoke}: ${error.message}`
