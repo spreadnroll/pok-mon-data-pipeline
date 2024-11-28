@@ -9,9 +9,9 @@ export async function fetchPokemonData(idPoke) {
     const response = await axios.get(`${baseUrl}/${idPoke}`);
     const pokemon = response.data;
 
-    const name = pokemon.name;
-    const weight = pokemon.weight;
-    const height = pokemon.height;
+    const name = pokemon.name.toLowerCase();
+    const weight = Number(pokemon.weight);
+    const height = Number(pokemon.height);
     const baseExperience = pokemon.base_experience;
     // const type = pokemon.types[0].type.name;
     const types = await Promise.all(pokemon.types.map(async (type) => {
