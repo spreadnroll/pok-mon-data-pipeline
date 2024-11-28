@@ -1,6 +1,12 @@
 import { fetchPokemonData } from './fetchPoke.js';
 
-(async () => {
-    const pokemon = await fetchPokemonData(23); "first attempt with ekans"
-    console.log(pokemon);
-})();
+async function fetchAllPokemons() {
+  const pokemonsData = [];
+  for (let id = 1; id <= 151; id++) {
+    const pokemon = await fetchPokemonData(id);
+    pokemonsData.push(pokemon);
+  }
+  console.log(pokemonsData);
+}
+
+fetchAllPokemons();
