@@ -34,7 +34,7 @@ export async function fetchPokemonData(idPoke) {
   }));
     // const abilities = pokemon.abilities.map((ability) => ability.ability.name);
 
-    const abilitiesAndDescription = await Promise.all (pokemon.abilities.map(async (ability) => {
+    const abilitiesAndDescription =  await Promise.all (pokemon.abilities.map(async (ability) => {
       const abilityReponse = await axios.get(`${baseAbilityUrl}/${ability.ability.name}`);
       const abilityData = abilityReponse.data;
 
