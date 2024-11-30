@@ -1,4 +1,4 @@
-import { fetchPokemonData } from '../src/fetchPoke.js';
+const { fetchPokemonData } = require('../src/fetchPoke');
 
 // Test with Bulbasaur
 describe('fetchPokemonData', () => {
