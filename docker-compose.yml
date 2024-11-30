@@ -1,7 +1,13 @@
+version: '3.8'
+
+networks:
+  custom_network:
+    driver: bridge
+
 services:
   db:
-    image: postgres:13
-    container_name: postgres_container
+    image: postgres:latest
+    container_name: postgresql
     environment:
       POSTGRES_USER: pokeuser
       POSTGRES_PASSWORD: 123_Stella
@@ -9,20 +15,20 @@ services:
     ports:
       - "5432:5432"
     networks:
-      - pg_network
+      - custom_network
+    volumes:
+      - psdb-volume:/var/lib/postgresql/data
 
   pgadmin:
     image: dpage/pgadmin4
-    container_name: pgadmin_container
+    container_name: pgadmin4
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@admin.com
-      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_DEFAULT_PASSWORD: 123_Stella
     ports:
       - "5050:80"
     networks:
-      - pg_network
+      - custom_network
 
-networks:
-  pg_network:
-    driver: bridge
-
+volumes:
+  psdb-volume:

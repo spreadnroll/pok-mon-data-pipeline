@@ -3,14 +3,13 @@ const { Client } = require('pg');
 async function initializeDb() {
   const client = new Client({
     user: 'pokeuser',
-    host: 'localhost',
+    host: '172.22.0.2',
     database: 'pokemon_db',
     password: '123_Stella',
     port: 5432,
   });
 
   await client.connect();
-  
   
   await client.query(`
     CREATE TABLE IF NOT EXISTS pokemon (
