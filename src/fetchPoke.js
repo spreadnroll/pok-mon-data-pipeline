@@ -1,6 +1,6 @@
-import axios from "axios";
+const axios = require("axios");
 
-export async function fetchPokemonData(idPoke) {
+async function fetchPokemonData(idPoke) {
   const baseUrl = "https://pokeapi.co/api/v2/pokemon";
   const baseAbilityUrl = "https://pokeapi.co/api/v2/ability";
   const baseTypesUrl="https://pokeapi.co/api/v2/type"
@@ -59,3 +59,5 @@ export async function fetchPokemonData(idPoke) {
     );
   }
 }
+
+module.exports = { fetchPokemonData };

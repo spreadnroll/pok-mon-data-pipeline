@@ -1,19 +1,20 @@
-import sqlite3 from 'sqlite3';
-import { open } from 'sqlite';
+const { Client } = require('pg');
 
-
-
-export async function initializeDb() {
-
-  const db = await open({
-    filename: './pokemons.db',
-    driver: sqlite3.Database
+async function initializeDb() {
+  const client = new Client({
+    user: 'pokeuser',
+    host: 'localhost',
+    database: 'pokemon_db',
+    password: '123_Stella',
+    port: 5432,
   });
 
- 
-  await db.exec(`
+  await client.connect();
+  
+  
+  await client.query(`
     CREATE TABLE IF NOT EXISTS pokemon (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      id SERIAL PRIMARY KEY,
       name TEXT NOT NULL,
       weight INTEGER,
       height INTEGER,
@@ -21,7 +22,7 @@ export async function initializeDb() {
     );
     
     CREATE TABLE IF NOT EXISTS types (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      id SERIAL PRIMARY KEY,
       type_name TEXT NOT NULL
     );
 
@@ -33,7 +34,7 @@ export async function initializeDb() {
     );
 
     CREATE TABLE IF NOT EXISTS abilities (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      id SERIAL PRIMARY KEY,
       ability_name TEXT NOT NULL,
       ability_description TEXT
     );
@@ -46,7 +47,9 @@ export async function initializeDb() {
     );
   `);
 
-  console.log("Database initialized and tables created (if not already existing).");
+  console.log('Database initialized and tables created (if not already existing).');
 
-  return db;
+  return client;
 }
+
+module.exports = initializeDb;
