@@ -31,7 +31,8 @@ async function initializeDb() {
       pokemon_id INTEGER,
       type_id INTEGER,
       FOREIGN KEY (pokemon_id) REFERENCES pokemon (id),
-      FOREIGN KEY (type_id) REFERENCES types (id)
+      FOREIGN KEY (type_id) REFERENCES types (id),
+      UNIQUE(pokemon_id, type_id)  -- Vincolo di unicità per evitare duplicati
     );
 
     CREATE TABLE IF NOT EXISTS abilities (
@@ -44,7 +45,8 @@ async function initializeDb() {
       pokemon_id INTEGER,
       ability_id INTEGER,
       FOREIGN KEY (pokemon_id) REFERENCES pokemon (id),
-      FOREIGN KEY (ability_id) REFERENCES abilities (id)
+      FOREIGN KEY (ability_id) REFERENCES abilities (id),
+      UNIQUE(pokemon_id, ability_id)  -- Vincolo di unicità per evitare duplicati
     );
   `;
 
