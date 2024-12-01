@@ -13,11 +13,11 @@ async function fetchPokemonData(idPoke) {
     const weight = Number(pokemon.weight);
     const height = Number(pokemon.height);
     const baseExperience = pokemon.base_experience;
-    // const type = pokemon.types[0].type.name;
+
     const types = await Promise.all(pokemon.types.map(async (type) => {
       const typeResponse = await axios.get(`${baseTypesUrl}/${type.type.name}`);
       const typeData = typeResponse.data;
-  
+
       const damageRelations = {
           doubleDamageTo: typeData.damage_relations.double_damage_to.map((t) => t.name),
           doubleDamageFrom: typeData.damage_relations.double_damage_from.map((t) => t.name),
@@ -26,23 +26,21 @@ async function fetchPokemonData(idPoke) {
           noDamageTo: typeData.damage_relations.no_damage_to.map((t) => t.name),
           noDamageFrom: typeData.damage_relations.no_damage_from.map((t) => t.name),
       };
-  
+
       return {
           typeName: type.type.name,
           damageRelations,
       };
-  }));
-    // const abilities = pokemon.abilities.map((ability) => ability.ability.name);
+    }));
 
-    const abilitiesAndDescription =  await Promise.all (pokemon.abilities.map(async (ability) => {
-      const abilityReponse = await axios.get(`${baseAbilityUrl}/${ability.ability.name}`);
-      const abilityData = abilityReponse.data;
+    const abilitiesAndDescription = await Promise.all(pokemon.abilities.map(async (ability) => {
+      const abilityResponse = await axios.get(`${baseAbilityUrl}/${ability.ability.name}`);
+      const abilityData = abilityResponse.data;
 
       const abilityName = abilityData.name;
       const abilityDescription = abilityData.effect_entries.find(element => element.language.name === "en")?.effect || "No description available";
 
-      return {abilityName, abilityDescription}
-      
+      return { abilityName, abilityDescription };
     }));
 
     return {
@@ -50,8 +48,8 @@ async function fetchPokemonData(idPoke) {
       weight,
       height,
       baseExperience,
-      types,//: JSON.stringify(types),
-      abilitiesAndDescription,//: JSON.stringify(abilitiesAndDescription),
+      types,
+      abilitiesAndDescription,
     };
   } catch (error) {
     throw new Error(
