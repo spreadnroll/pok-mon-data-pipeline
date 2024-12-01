@@ -2,7 +2,7 @@ const { fetchPokemonData } = require('./fetchPoke.js');
 const initializeDb = require('./db.js');
 
 async function fetchAllPokemons() {
-  const db = await initializeDb();  // Connessione al DB SQLite
+  const db = await initializeDb();  
 
   const pokemonsData = [];
   const seenPokemon = new Set();
@@ -13,7 +13,7 @@ async function fetchAllPokemons() {
     if (!seenPokemon.has(pokemon.name)) {
       seenPokemon.add(pokemon.name);
 
-      // Inserimento nella tabella "pokemon"
+      
       db.run(
         `INSERT INTO pokemon (name, weight, height, base_experience) VALUES (?, ?, ?, ?)`,
         [pokemon.name, pokemon.weight, pokemon.height, pokemon.baseExperience],
@@ -21,12 +21,12 @@ async function fetchAllPokemons() {
           if (err) {
             console.error('Errore durante l\'inserimento del Pokémon:', err.message);
           } else {
-            const pokemonId = this.lastID;  // Ottieni l'ID del Pokémon appena inserito
+            const pokemonId = this.lastID;  
 
-            // Inserimento dei tipi nella tabella "types" e nelle relazioni "pokemon_types"
+            
             pokemon.types.forEach((type) => {
               db.run(
-                `INSERT OR IGNORE INTO types (type_name) VALUES (?)`,  // Usa INSERT OR IGNORE
+                `INSERT OR IGNORE INTO types (type_name) VALUES (?)`,  
                 [type.typeName],
                 function (err) {
                   if (err) {
@@ -34,7 +34,7 @@ async function fetchAllPokemons() {
                   } else {
                     const typeId = this.lastID;
                     db.run(
-                      `INSERT OR IGNORE INTO pokemon_types (pokemon_id, type_id) VALUES (?, ?)`,  // Usa INSERT OR IGNORE
+                      `INSERT OR IGNORE INTO pokemon_types (pokemon_id, type_id) VALUES (?, ?)`, 
                       [pokemonId, typeId],
                       function (err) {
                         if (err) {
@@ -47,7 +47,7 @@ async function fetchAllPokemons() {
               );
             });
 
-            // Inserimento delle abilità nella tabella "abilities" e nelle relazioni "pokemon_abilities"
+            
             pokemon.abilitiesAndDescription.forEach((ability) => {
               db.run(
                 `INSERT OR IGNORE INTO abilities (ability_name, ability_description) VALUES (?, ?)`,  // Usa INSERT OR IGNORE
@@ -58,7 +58,7 @@ async function fetchAllPokemons() {
                   } else {
                     const abilityId = this.lastID;
                     db.run(
-                      `INSERT OR IGNORE INTO pokemon_abilities (pokemon_id, ability_id) VALUES (?, ?)`,  // Usa INSERT OR IGNORE
+                      `INSERT OR IGNORE INTO pokemon_abilities (pokemon_id, ability_id) VALUES (?, ?)`, 
                       [pokemonId, abilityId],
                       function (err) {
                         if (err) {
