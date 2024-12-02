@@ -17,7 +17,7 @@ SELECT t.type_name, p.name AS pokemon_name, p.weight
 FROM pokemon p
 JOIN pokemon_types pt ON p.id = pt.pokemon_id
 JOIN types t ON pt.type_id = t.id
-ORDER BY t.type_name, p.weight DESC
+ORDER BY p.weight DESC
 LIMIT 5;
 ```
 
@@ -26,11 +26,11 @@ LIMIT 5;
 
 | type_name | pokemon_name | weight |
 |-----------|--------------|--------|
-| bug       | beedrill     | 295    |
-| bug       | metapod      | 99     |
-| bug       | caterpie     | 29     |
-| dragon    | dratini      | 33     |
-| electric  | pikachu      | 60     |
+| fire      | arcanine     | 1550   |
+| ice       | dewgong      | 1200   |
+| grass     | venusaur     | 1000   |
+| poison    | venusaur     | 1000   |
+| flying    | charizard    | 905    |
 
 ---
 
