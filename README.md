@@ -13,25 +13,23 @@ This project retrieves Pokémon data from the PokéAPI, processes it, stores it 
 
 ### 1. Top 5 Heaviest Pokémon per Type
 ```sql
-SELECT t.type_name, p.name AS pokemon_name, p.weight
+SELECT p.name AS pokemon_name, p.weight
 FROM pokemon p
-JOIN pokemon_types pt ON p.id = pt.pokemon_id
-JOIN types t ON pt.type_id = t.id
 ORDER BY p.weight DESC
 LIMIT 5;
+
 ```
 
 --- Expected result: This query returns the top 5 heaviest Pokémon per each type, ordered by weight in descending order: 
 
 
-| type_name | pokemon_name | weight |
-|-----------|--------------|--------|
-| fire      | arcanine     | 1550   |
-| ice       | dewgong      | 1200   |
-| grass     | venusaur     | 1000   |
-| poison    | venusaur     | 1000   |
-| flying    | charizard    | 905    |
-
+| pokemon_name | weight |
+|--------------|--------|
+| snorlax      | 4600   |
+| golem        | 3000   |
+| gyarados     | 2350   |
+| lapras       | 2200   |
+| onix         | 2100   |
 ---
 
 ### 2. Pokémons with the Most Abilities
