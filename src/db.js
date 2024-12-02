@@ -52,9 +52,9 @@ async function initializeDb() {
 
   db.exec(queries, (err) => {
     if (err) {
-      console.error('Errore durante la creazione delle tabelle:', err.message);
+      console.error('Error during tables creations:', err.message);
     } else {
-      console.log('Tabelle create o già esistenti.');
+      console.log('Tables already created or existing.');
     }
   });
 
