@@ -9,6 +9,9 @@ This project retrieves Pokémon data from the PokéAPI, processes it, stores it 
 3. Install dependencies using `npm install` (if using Node.js).
 4. Run `npm run start` or `node src/index.js` to fetch and store Pokémon data.
 5. Run `node src/typeRelationsInject.js` to create type relations table and store the data.
+6. To store data better and fix types errors associated to a list of pokémons before to try the next SQL queries
+read the "Fix_data_store.md" file then go back here.
+7. You are ready to test these queries.
 
 ## SQL Queries
 

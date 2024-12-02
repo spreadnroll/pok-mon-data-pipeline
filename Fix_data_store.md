@@ -23,7 +23,7 @@ There are types associations wrong in that API so you have to fix them with some
 
 ### 1. To add fire type in Charizard:
 ```sql
-`UPDATE pokemon_types
+UPDATE pokemon_types
 SET type_id = (SELECT id FROM types WHERE type_name = 'fire')
 WHERE pokemon_id = (SELECT id FROM pokemon WHERE name = 'charizard');
 ```
