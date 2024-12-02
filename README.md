@@ -8,6 +8,7 @@ This project retrieves Pokémon data from the PokéAPI, processes it, stores it 
 2. Make sure you have Node.js installed (latest version) and its dependencies. You may also need C++ and Python development packages to get SQLite3 working properly.
 3. Install dependencies using `npm install` (if using Node.js).
 4. Run `npm run start` or `node src/index.js` to fetch and store Pokémon data.
+5. Run `node src/typeRelationsInject.js` to create type relations table and store the data.
 
 ## SQL Queries
 
@@ -140,10 +141,5 @@ This query returns a list of type matchups with the type of damage dealt (double
 ---
 
 
-
-
 Description:
-double_damage_to: The attacking type deals double damage to the defending type.
-half_damage_to: The attacking type deals half damage to the defending type.
-no_damage_to: The attacking type deals no damage to the defending type.
 These relationships are central to Pokémon battle strategies, where knowing the strengths and weaknesses of each type can give players a tactical advantage.
