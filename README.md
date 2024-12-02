@@ -73,7 +73,7 @@ JOIN types t ON pt.type_id = t.id
 GROUP BY t.type_name
 ORDER BY average_experience DESC;
 ```
---- expected resut: 
+--- Expected result:
 type_name             average_experience
 flying	                    194.5
 ice	                        166.0
@@ -92,7 +92,7 @@ rock	                    60.0
 ground	                    60.0
 dragon	                    60.0
 normal	                    50.0
-----
+---
 
 
 
