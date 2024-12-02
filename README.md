@@ -19,6 +19,7 @@ JOIN pokemon_types pt ON p.id = pt.pokemon_id
 JOIN types t ON pt.type_id = t.id
 ORDER BY t.type_name, p.weight DESC
 LIMIT 5;
+```
 
 --- Expected result: This query returns the top 5 heaviest Pokémon per each type, ordered by weight in descending order: 
 type_name   pokemon_name       weight
@@ -37,6 +38,7 @@ FROM pokemon p
 JOIN pokemon_abilities pa ON p.id = pa.pokemon_id
 GROUP BY p.id
 ORDER BY ability_count DESC;
+```
 
 
 --- Expected result: this query returns the Pokémons with the most abilities (3).
@@ -70,7 +72,7 @@ JOIN pokemon_types pt ON p.id = pt.pokemon_id
 JOIN types t ON pt.type_id = t.id
 GROUP BY t.type_name
 ORDER BY average_experience DESC;
-
+```
 --- expected resut: 
 type_name             average_experience
 flying	                    194.5
@@ -95,12 +97,45 @@ normal	                    50.0
 
 
 ### 4. Strongest and Weakest Damage Relations (Optional)
+This query retrieves the relationships between Pokémon types, indicating which types deal double damage, half damage, or no damage to other types. This is useful for understanding type effectiveness in battles.
+
 ```sql
-SELECT t.type_name AS attacking_type, tr.type_name AS defending_type, 'double_damage_to' AS relation
-FROM types t
-JOIN type_relations tr ON t.id = tr.attacking_type_id
-WHERE tr.relation_type = 'double_damage_to'
-ORDER BY attacking_type, defending_type;
+SELECT tr.attacking_type, tr.defending_type, tr.relation_type
+FROM type_relations tr
+ORDER BY tr.attacking_type, tr.defending_type;
+```
+--- Expected result:
+This query returns a list of type matchups with the type of damage dealt (double, half, or no damage):
+
+
+Attacking Type	     Defending Type	                Relation Type
+dragon	                  fairy	                     no_damage_to
+electric	             electric	                 half_damage_to
+electric	              flying	                 double_damage_to
+electric	              ground	                 no_damage_to
+electric	              water	                     double_damage_to
+fighting	              flying	                 half_damage_to
+fighting	              ghost	                     no_damage_to
+fighting	              psychic	                 half_damage_to
+fire	                   bug	                     double_damage_to
+fire	                   fire	                     half_damage_to
+fire	                   grass	                 double_damage_to
+fire	                   ice	                     double_damage_to
+ghost	                   normal	                 no_damage_to
+grass	                  electric	                 half_damage_to
+grass	                    fire	                 half_damage_to
+grass	                   water	                 double_damage_to
+ground	                  electric	                 half_damage_to
+normal	                   ghost	                  no_damage_to
+psychic	                  fighting	                 double_damage_to
+water	                    fire	                 double_damage_to
+water	                    water	                   half_damage_to
 
 
 
+
+Description:
+double_damage_to: The attacking type deals double damage to the defending type.
+half_damage_to: The attacking type deals half damage to the defending type.
+no_damage_to: The attacking type deals no damage to the defending type.
+These relationships are central to Pokémon battle strategies, where knowing the strengths and weaknesses of each type can give players a tactical advantage.
