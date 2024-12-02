@@ -135,3 +135,6 @@ dist
 .pnp.*
 
 .vs
+
+pokemon.db
+src/pokemon - backup 02/12/
