@@ -22,12 +22,15 @@ LIMIT 5;
 ```
 
 --- Expected result: This query returns the top 5 heaviest Pokémon per each type, ordered by weight in descending order: 
-type_name   pokemon_name       weight
-bug	        beedrill	       295
-bug	        metapod	           99
-bug	        caterpie	       29
-dragon	    dratini	           33
-electric	pikachu	           60
+
+
+| type_name | pokemon_name | weight |
+|-----------|--------------|--------|
+| bug       | beedrill     | 295    |
+| bug       | metapod      | 99     |
+| bug       | caterpie     | 29     |
+| dragon    | dratini      | 33     |
+| electric  | pikachu      | 60     |
 
 ---
 
@@ -42,23 +45,25 @@ ORDER BY ability_count DESC;
 
 
 --- Expected result: this query returns the Pokémons with the most abilities (3).
-pokemon_name     ability_count
-pidgey	              3
-rattata         	  3
-clefairy	          3
-diglett	              3
-psyduck	              3
-mankey	              3
-machop	              3
-tentacool	          3
-slowpoke	          3
-seel	              3
-grimer	              3
-shellder	          3
-hitmonlee	          3
-chansey	              3
-pinsir	              3
-eevee	              3
+
+| pokemon_name | ability_count |
+|--------------|---------------|
+| pidgey       | 3             |
+| rattata      | 3             |
+| clefairy     | 3             |
+| diglett      | 3             |
+| psyduck      | 3             |
+| mankey       | 3             |
+| machop       | 3             |
+| tentacool    | 3             |
+| slowpoke     | 3             |
+| seel         | 3             |
+| grimer       | 3             |
+| shellder     | 3             |
+| hitmonlee    | 3             |
+| chansey      | 3             |
+| pinsir       | 3             |
+| eevee        | 3             |
 
 ---
 
@@ -74,24 +79,26 @@ GROUP BY t.type_name
 ORDER BY average_experience DESC;
 ```
 --- Expected result:
-type_name             average_experience
-flying	                    194.5
-ice	                        166.0
-grass	                    163.5
-water	                156.666666666667
-poison	                156.333333333333
-fire	                147.666666666667
-psychic	                    130.0
-fairy	                    113.0
-electric	                112.0
-bug	                    96.3333333333333
-steel	                    68.5
-ghost	                    62.0
-fighting	                61.0
-rock	                    60.0
-ground	                    60.0
-dragon	                    60.0
-normal	                    50.0
+| type_name | average_experience |
+|-----------|--------------------|
+| flying    | 194.5              |
+| ice       | 166.0              |
+| grass     | 163.5              |
+| water     | 156.666666666667   |
+| poison    | 156.333333333333   |
+| fire      | 147.666666666667   |
+| psychic   | 130.0              |
+| fairy     | 113.0              |
+| electric  | 112.0              |
+| bug       | 96.3333333333333   |
+| steel     | 68.5               |
+| ghost     | 62.0               |
+| fighting  | 61.0               |
+| rock      | 60.0               |
+| ground    | 60.0               |
+| dragon    | 60.0               |
+| normal    | 50.0               |
+
 ---
 
 
@@ -108,28 +115,31 @@ ORDER BY tr.attacking_type, tr.defending_type;
 This query returns a list of type matchups with the type of damage dealt (double, half, or no damage):
 
 
-Attacking Type	     Defending Type	                Relation Type
-dragon	                  fairy	                     no_damage_to
-electric	             electric	                 half_damage_to
-electric	              flying	                 double_damage_to
-electric	              ground	                 no_damage_to
-electric	              water	                     double_damage_to
-fighting	              flying	                 half_damage_to
-fighting	              ghost	                     no_damage_to
-fighting	              psychic	                 half_damage_to
-fire	                   bug	                     double_damage_to
-fire	                   fire	                     half_damage_to
-fire	                   grass	                 double_damage_to
-fire	                   ice	                     double_damage_to
-ghost	                   normal	                 no_damage_to
-grass	                  electric	                 half_damage_to
-grass	                    fire	                 half_damage_to
-grass	                   water	                 double_damage_to
-ground	                  electric	                 half_damage_to
-normal	                   ghost	                  no_damage_to
-psychic	                  fighting	                 double_damage_to
-water	                    fire	                 double_damage_to
-water	                    water	                   half_damage_to
+| attacking_type | defending_type | relation_type    |
+|----------------|----------------|------------------|
+| dragon         | fairy          | no_damage_to     |
+| electric       | electric       | half_damage_to   |
+| electric       | flying         | double_damage_to |
+| electric       | ground         | no_damage_to     |
+| electric       | water          | double_damage_to |
+| fighting       | flying         | half_damage_to   |
+| fighting       | ghost          | no_damage_to     |
+| fighting       | psychic        | half_damage_to   |
+| fire           | bug            | double_damage_to |
+| fire           | fire           | half_damage_to   |
+| fire           | grass          | double_damage_to |
+| fire           | ice            | double_damage_to |
+| ghost          | normal         | no_damage_to     |
+| grass          | electric       | half_damage_to   |
+| grass          | fire           | half_damage_to   |
+| grass          | water          | double_damage_to |
+| ground         | electric       | half_damage_to   |
+| normal         | ghost          | no_damage_to     |
+| psychic        | fighting       | double_damage_to |
+| water          | fire           | double_damage_to |
+| water          | water          | half_damage_to   |
+
+---
 
 
 
