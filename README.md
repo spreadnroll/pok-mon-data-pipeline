@@ -7,11 +7,11 @@ This project retrieves Pokémon data from the PokéAPI, processes it, stores it 
 1. Clone the repository.
 2. Make sure you have Node.js installed (latest version) and its dependencies. You may also need C++ and Python development packages to get SQLite3 working properly.
 3. Install dependencies using `npm install` (if using Node.js).
-4. Run `npm run start` or `node src/index.js` to fetch and store Pokémon data.
-5. Run `node src/typeRelationsInject.js` to create type relations table and store the data.
-6. To store data better and fix types errors associated to a list of pokémons before to try the next SQL queries
-read the "Fix_data_store.md" file then go back here.
-7. You are ready to test these queries.
+4. Run `npm run test` to check if data fetching works properly.
+5. Run `npm run start` or `node src/index.js` to fetch and store Pokémon data.
+6. Run `node src/typeRelationsInject.js` to create type relations table and store the data.
+7. To improve data storage and fix type errors associated with certain Pokémons before running the next SQL queries, refer to the 'Fix_data_store.md' file.
+8. You are ready to test these queries (DB browser for SQLite recommended).
 
 ## SQL Queries
 
