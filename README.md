@@ -146,3 +146,12 @@ This query returns a list of type matchups with the type of damage dealt (double
 
 Description:
 These relationships are central to Pokémon battle strategies, where knowing the strengths and weaknesses of each type can give players a tactical advantage.
+
+
+### Tests
+I implemented and tried some tests to fetch datas from API thanks to Jest library (Directory name "Tests")
+
+
+### Message of transparency:
+During the development of this project, I consulted external resources such as documentations (Jest, SQLite for Node.js) and ChatGPT to explore solutions for certain technical challenges related to type classification and SQL queries. Additionally, I asked for feedback from friends working in programming fields to gather insights. All final implementations were adapted and integrated into the project context.
+This also allowed me to review and study new solutions and test myself as the Junior that I am.
