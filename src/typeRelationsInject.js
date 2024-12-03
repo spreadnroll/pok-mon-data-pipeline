@@ -3,7 +3,7 @@ const path = require("path");
 const initializeDbTypeRelations = require("./typeRelationsConfig");
 
 async function main() {
-  console.log("Inizializzazione della tabella type_relations...");
+  console.log("Initializing type_relations table...");
   
   
   await initializeDbTypeRelations();
@@ -26,7 +26,7 @@ async function populateTypeRelations() {
     console.log("Db connected.");
   });
 
-  
+  //To avoid overloading the PokéAPI with excessive HTTP requests, I chose to manually extract and include only a subset of significant type relationships (e.g., double_damage_to, half_damage_to, and no_damage_to) for this project. 
   const relations = [
     // double_damage_to
     { attacking_type: "fire", defending_type: "grass", relation_type: "double_damage_to" },

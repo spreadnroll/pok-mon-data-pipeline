@@ -11,7 +11,7 @@ async function initializeDbTypeRelations() {
       if (err) {
         throw new Error(`Error opening database: ${err.message}`);
       }
-      console.log("Connesso al database SQLite.");
+      console.log("SQLite DB Connected.");
     });
 
     

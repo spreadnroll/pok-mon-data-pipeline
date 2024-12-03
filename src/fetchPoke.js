@@ -6,14 +6,17 @@ async function fetchPokemonData(idPoke) {
   const baseTypesUrl="https://pokeapi.co/api/v2/type"
 
   try {
+    //Http requests with Axios
     const response = await axios.get(`${baseUrl}/${idPoke}`);
     const pokemon = response.data;
 
+    //Normalizing data
     const name = pokemon.name.toLowerCase();
     const weight = Number(pokemon.weight);
     const height = Number(pokemon.height);
     const baseExperience = pokemon.base_experience;
 
+    //Types extraction from API
     const types = await Promise.all(pokemon.types.map(async (type) => {
       const typeResponse = await axios.get(`${baseTypesUrl}/${type.type.name}`);
       const typeData = typeResponse.data;
@@ -33,6 +36,7 @@ async function fetchPokemonData(idPoke) {
       };
     }));
 
+    //Abilities elaboration from API
     const abilitiesAndDescription = await Promise.all(pokemon.abilities.map(async (ability) => {
       const abilityResponse = await axios.get(`${baseAbilityUrl}/${ability.ability.name}`);
       const abilityData = abilityResponse.data;
