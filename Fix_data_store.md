@@ -140,18 +140,8 @@ VALUES ((SELECT id FROM pokemon WHERE name = 'pidgeotto'), 4);
 
 Correct Pidgey:
 ```sql
-DELETE FROM pokemon_types
-WHERE pokemon_id = (SELECT id FROM pokemon WHERE name = 'pidgey') AND type_id = 16;
 INSERT INTO pokemon_types (pokemon_id, type_id)
-VALUES ((SELECT id FROM pokemon WHERE name = 'pidgey'), 7), 4;
-```
-
-Correct Wartotle:
-```sql
-DELETE FROM pokemon_types
-WHERE pokemon_id = (SELECT id FROM pokemon WHERE name = 'wartortle') AND type_id = 8;
-INSERT INTO pokemon_types (pokemon_id, type_id)
-VALUES ((SELECT id FROM pokemon WHERE name = 'wartortle'), 5);
+VALUES ((SELECT id FROM pokemon WHERE name = 'pidgey'), 4);
 ```
 
 Correct Weedle:
@@ -159,7 +149,9 @@ Correct Weedle:
 DELETE FROM pokemon_types
 WHERE pokemon_id = (SELECT id FROM pokemon WHERE name = 'weedle') AND type_id = 13;
 INSERT INTO pokemon_types (pokemon_id, type_id)
-VALUES ((SELECT id FROM pokemon WHERE name = 'weedle'), 6), (SELECT id FROM pokemon WHERE name = 'weedle'), 2; 
+VALUES ((SELECT id FROM pokemon WHERE name = 'weedle'), 6);
+INSERT INTO pokemon_types (pokemon_id, type_id)
+VALUES ((SELECT id FROM pokemon WHERE name = 'weedle'), 2);
 ```
 
 Correct Metapod:
@@ -193,7 +185,7 @@ INSERT INTO pokemon_types (pokemon_id, type_id)
 VALUES ((SELECT id FROM pokemon WHERE name = 'ivysaur'), 1);
 ```
 
-Final control:
+### 4. Final control query:
 ```sql
 SELECT p.name AS pokemon_name, t.type_name
 FROM pokemon p
