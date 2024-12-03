@@ -10,7 +10,7 @@ This project retrieves Pokémon data from the PokéAPI, processes it, stores it 
 4. Run `npm run test` to check if data fetching works properly.
 5. Run `npm run start` or `node src/index.js` to fetch and store Pokémon data.
 6. Run `node src/typeRelationsInject.js` to create type relations table and store the data.
-7. To improve data storage and fix type errors associated with certain Pokémons before running the next SQL queries, refer to the 'Fix_data_store.md' file.
+7. To improve data storage and fix type errors associated with certain Pokémons before running the next SQL queries, refer to the 'Fix_data_stored.md' file.
 8. You are ready to test these queries (DB browser for SQLite recommended).
 
 ## SQL Queries
